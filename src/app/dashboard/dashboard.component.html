@@ -44,6 +44,15 @@
               </mat-form-field>
             </div>
           </div>
+          <!-- Pie Chart for Perfil de dimensões -->
+          <div class="chart-container">
+            <ngx-charts-pie-chart
+              [results]="dimensionData"
+              [scheme]="dimensionColors"
+              [labels]="true"
+              [doughnut]="false"
+            ></ngx-charts-pie-chart>
+          </div>
         </div>
       </div>
 
@@ -65,6 +74,19 @@
                 <span>Saudável</span>
               </div>
             </div>
+          </div>
+          <!-- Grouped Bar Chart for Perfil de Fragilidade -->
+          <div class="chart-container">
+            <ngx-charts-bar-vertical-2d
+              [results]="fragilityData"
+              [scheme]="fragilityColors"
+              [xAxis]="true"
+              [yAxis]="true"
+              [showXAxisLabel]="false"
+              [showYAxisLabel]="false"
+              [xAxisLabel]="'Período Selecionado'"
+              [yAxisLabel]="'Número de Pacientes'"
+            ></ngx-charts-bar-vertical-2d>
           </div>
         </div>
       </div>
@@ -104,6 +126,15 @@
               </mat-form-field>
             </div>
           </div>
+          <!-- Pie Chart for Perfil Sociodemográfico -->
+          <div class="chart-container">
+            <ngx-charts-pie-chart
+              [results]="demographicData"
+              [scheme]="demographicColors"
+              [labels]="true"
+              [doughnut]="false"
+            ></ngx-charts-pie-chart>
+          </div>
         </div>
       </div>
 
@@ -125,6 +156,19 @@
                 <span>Assistente social</span>
               </div>
             </div>
+          </div>
+          <!-- Grouped Bar Chart for Profissionais -->
+          <div class="chart-container">
+            <ngx-charts-bar-vertical-2d
+              [results]="professionalData"
+              [scheme]="professionalColors"
+              [xAxis]="true"
+              [yAxis]="true"
+              [showXAxisLabel]="false"
+              [showYAxisLabel]="false"
+              [xAxisLabel]="'Período Selecionado'"
+              [yAxisLabel]="'Número de Avaliações'"
+            ></ngx-charts-bar-vertical-2d>
           </div>
         </div>
       </div>
@@ -175,6 +219,19 @@
                 </mat-select>
               </mat-form-field>
             </div>
+          </div>
+          <!-- Grouped Bar Chart for Pontuação dos desfechos -->
+          <div class="chart-container">
+            <ngx-charts-bar-vertical-2d
+              [results]="outcomeData"
+              [scheme]="outcomeColors"
+              [xAxis]="true"
+              [yAxis]="true"
+              [showXAxisLabel]="false"
+              [showYAxisLabel]="false"
+              [xAxisLabel]="'Período Selecionado'"
+              [yAxisLabel]="'Pontuação'"
+            ></ngx-charts-bar-vertical-2d>
           </div>
         </div>
       </div>
