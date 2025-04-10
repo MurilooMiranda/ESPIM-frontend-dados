@@ -55,7 +55,7 @@
       line-height: 1.4;
 
       &.positive {
-        background-color: #66D6FC;
+        background-color: #66d6fc;
       }
     }
   }
@@ -80,10 +80,11 @@
     .chart-container {
       position: relative;
       min-height: 200px;
-      margin: 20px 0;
-      max-width: 400px; // Adicionado para limitar a largura
-      margin-left: auto; // Centralizar
-      margin-right: auto; // Centralizar
+      max-width: 400px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .legend {
@@ -108,34 +109,34 @@
         border-radius: 1px;
 
         &.orange {
-          background-color: #C96807;
+          background-color: #c96807;
         }
         &.pink {
-          background-color: #EA00FF;
+          background-color: #ea00ff;
         }
         &.yellow {
-          background-color: #FFFB09;
+          background-color: #d4c300; // tom mais escuro para melhor contraste
         }
         &.green {
-          background-color: #51FF00;
+          background-color: #51ff00;
         }
         &.red {
-          background-color: #FF0004;
+          background-color: #ff0004;
         }
         &.cyan {
-          background-color: #00FFD9;
+          background-color: #00ffd9;
         }
         &.purple {
-          background-color: #AA00FF;
+          background-color: #aa00ff;
         }
         &.dark-purple {
-          background-color: #A300D9;
+          background-color: #a300d9;
         }
         &.gold {
-          background-color: #8E8C23;
+          background-color: #8e8c23;
         }
         &.dark-blue {
-          background-color: #050FC7;
+          background-color: #050fc7;
         }
       }
     }
@@ -152,6 +153,11 @@
       background: #e1e1e1;
       border: 1px solid rgba(0, 0, 0, 0.1);
       cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #d6d6d6;
+      }
 
       .arrow-icon {
         width: 6px;
@@ -180,7 +186,9 @@
   }
 
   mat-form-field {
-    width: 150px;
+    min-width: 120px;
+    max-width: 180px;
+    width: 100%;
     margin-top: 10px;
     font-size: 10px !important;
     height: fit-content;
@@ -216,5 +224,22 @@
   .dimension-select mat-label {
     visibility: visible !important;
     opacity: 1 !important;
+  }
+
+  // Responsividade
+  @media (max-width: 768px) {
+    .dashboard-section .chart-container {
+      max-width: 100%;
+      min-height: 250px;
+    }
+
+    .dashboard-section .legend {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
   }
 }

@@ -5,6 +5,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { NgForOf } from '@angular/common';
+import { ScaleType } from "@swimlane/ngx-charts";
 
 @Component({
   selector: "app-dashboard",
@@ -27,227 +28,115 @@ export class DashboardComponent {
   selectedOutcome = "";
 
   dimensionOptions = [
-    "Idade",
-    "Autopercepção de Saúde",
-    "Suporte Social",
-    "Condição Crônica",
-    "Medicamentos",
-    "Internações",
-    "Quedas",
-    "Visão",
-    "Audição",
-    "Limitação Física",
-    "Cognição",
-    "Humor",
-    "ABVD",
-    "AIVD",
-    "Incontinência",
-    "Perda de Peso",
-    "Condição Bucal",
-  ];
-  demographicOptions = ["Raça", "Cor", "Sexo"];
-  outcomeOptions = [
-    "Idade",
-    "Autopercepção de Saúde",
-    "Suporte Social",
-    "Condição Crônica",
-    "Medicamentos",
-    "Internações",
-    "Quedas",
-    "Visão",
-    "Audição",
-    "Limitação Física",
-    "Cognição",
-    "Humor",
-    "ABVD",
-    "AIVD",
-    "Incontinência",
-    "Perda de Peso",
-    "Condição Bucal",
+    "Idade", "Autopercepção de Saúde", "Suporte Social", "Condição Crônica",
+    "Medicamentos", "Internações", "Quedas", "Visão", "Audição", "Limitação Física",
+    "Cognição", "Humor", "ABVD", "AIVD", "Incontinência", "Perda de Peso", "Condição Bucal"
   ];
 
-  // Data for "Perfil de dimensões" (Pie Chart)
+  demographicOptions = ["Raça", "Cor", "Sexo"];
+  outcomeOptions = [...this.dimensionOptions];
+
   dimensionData = [
     { name: "NÃO para todos os itens", value: 37 },
     { name: "SIM de 1 a 4 itens", value: 63 },
   ];
-
-  // Colors for "Perfil de dimensões"
   dimensionColors = {
-    domain: ["#C96807", "#EA00FF"], // Orange, Pink
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ["#C96807", "#EA00FF"],
   };
 
-  // Data for "Perfil de Fragilidade" (Grouped Vertical Bar Chart)
   fragilityData = [
     {
-      name: "jan",
+      name: "Janeiro",
       series: [
-        { name: "Frágil", value: 50 },
-        { name: "Não-Frágil", value: 20 },
-        { name: "Saudável", value: 30 },
-      ],
+        { name: "Frágil", value: 12 },
+        { name: "Não-Frágil", value: 28 },
+        { name: "Saudável", value: 15 }
+      ]
     },
     {
-      name: "fev",
+      name: "Fevereiro",
       series: [
-        { name: "Frágil", value: 40 },
-        { name: "Não-Frágil", value: 25 },
-        { name: "Saudável", value: 35 },
-      ],
-    },
-    {
-      name: "mar",
-      series: [
-        { name: "Frágil", value: 45 },
-        { name: "Não-Frágil", value: 30 },
-        { name: "Saudável", value: 25 },
-      ],
-    },
-    {
-      name: "abr",
-      series: [
-        { name: "Frágil", value: 55 },
-        { name: "Não-Frágil", value: 15 },
-        { name: "Saudável", value: 30 },
-      ],
-    },
-    {
-      name: "mai",
-      series: [
-        { name: "Frágil", value: 50 },
-        { name: "Não-Frágil", value: 20 },
-        { name: "Saudável", value: 30 },
-      ],
-    },
+        { name: "Frágil", value: 18 },
+        { name: "Não-Frágil", value: 22 },
+        { name: "Saudável", value: 20 }
+      ]
+    }
   ];
-
-  // Colors for "Perfil de Fragilidade"
   fragilityColors = {
-    domain: ["#FFFB09", "#51FF00", "#050FC7"], // Yellow, Green, Dark Blue
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ["#FFFB09", "#51FF00", "#050FC7"],
   };
 
-  // Data for "Perfil Sociodemográfico" (Pie Chart)
   demographicData = [
     { name: "Negro", value: 30 },
     { name: "Branco", value: 58 },
     { name: "Pardo", value: 12 },
   ];
-
-  // Colors for "Perfil Sociodemográfico"
   demographicColors = {
-    domain: ["#FF0004", "#00FFD9", "#AA00FF"], // Red, Cyan, Purple
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ["#FF0004", "#00FFD9", "#AA00FF"],
   };
 
-  // Data for "Profissionais que mais fizeram avaliações" (Grouped Vertical Bar Chart)
   professionalData = [
     {
-      name: "jan",
+      name: "Janeiro",
       series: [
-        { name: "Enfermeiro", value: 60 },
-        { name: "Médico", value: 40 },
-        { name: "Assistente social", value: 20 },
-      ],
+        { name: "Enfermeiro", value: 15 },
+        { name: "Médico", value: 25 },
+        { name: "Assistente social", value: 10 }
+      ]
     },
     {
-      name: "fev",
+      name: "Fevereiro",
       series: [
-        { name: "Enfermeiro", value: 50 },
+        { name: "Enfermeiro", value: 20 },
         { name: "Médico", value: 30 },
-        { name: "Assistente social", value: 25 },
-      ],
-    },
-    {
-      name: "mar",
-      series: [
-        { name: "Enfermeiro", value: 70 },
-        { name: "Médico", value: 35 },
-        { name: "Assistente social", value: 30 },
-      ],
-    },
-    {
-      name: "abr",
-      series: [
-        { name: "Enfermeiro", value: 65 },
-        { name: "Médico", value: 45 },
-        { name: "Assistente social", value: 20 },
-      ],
-    },
-    {
-      name: "mai",
-      series: [
-        { name: "Enfermeiro", value: 60 },
-        { name: "Médico", value: 40 },
-        { name: "Assistente social", value: 25 },
-      ],
-    },
+        { name: "Assistente social", value: 12 }
+      ]
+    }
   ];
-
-  // Colors for "Profissionais que mais fizeram avaliações"
   professionalColors = {
-    domain: ["#A300D9", "#8E8C23", "#050FC7"], // Dark Purple, Gold, Dark Blue
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ["#A300D9", "#8E8C23", "#050FC7"],
   };
 
-  // Data for "Pontuação dos desfechos" (Grouped Vertical Bar Chart)
   outcomeData = [
     {
-      name: "jan",
+      name: "Janeiro",
       series: [
-        { name: "Humor", value: 60 },
-        { name: "Cognição", value: 50 },
-        { name: "Limitação Física", value: 40 },
-        { name: "Visão", value: 30 },
-        { name: "Quedas", value: 20 },
-        { name: "Audição", value: 10 },
-      ],
+        { name: "Humor", value: 6 },
+        { name: "Cognição", value: 8 },
+        { name: "Limitação Física", value: 5 },
+        { name: "Visão", value: 7 },
+        { name: "Quedas", value: 4 },
+        { name: "Audição", value: 9 }
+      ]
     },
     {
-      name: "fev",
+      name: "Fevereiro",
       series: [
-        { name: "Humor", value: 55 },
-        { name: "Cognição", value: 45 },
-        { name: "Limitação Física", value: 35 },
-        { name: "Visão", value: 25 },
-        { name: "Quedas", value: 15 },
-        { name: "Audição", value: 5 },
-      ],
-    },
-    {
-      name: "mar",
-      series: [
-        { name: "Humor", value: 65 },
-        { name: "Cognição", value: 55 },
-        { name: "Limitação Física", value: 45 },
-        { name: "Visão", value: 35 },
-        { name: "Quedas", value: 25 },
-        { name: "Audição", value: 15 },
-      ],
-    },
-    {
-      name: "abr",
-      series: [
-        { name: "Humor", value: 50 },
-        { name: "Cognição", value: 40 },
-        { name: "Limitação Física", value: 30 },
-        { name: "Visão", value: 20 },
-        { name: "Quedas", value: 10 },
-        { name: "Audição", value: 5 },
-      ],
-    },
-    {
-      name: "mai",
-      series: [
-        { name: "Humor", value: 70 },
-        { name: "Cognição", value: 60 },
-        { name: "Limitação Física", value: 50 },
-        { name: "Visão", value: 40 },
-        { name: "Quedas", value: 30 },
-        { name: "Audição", value: 20 },
-      ],
-    },
+        { name: "Humor", value: 7 },
+        { name: "Cognição", value: 6 },
+        { name: "Limitação Física", value: 6 },
+        { name: "Visão", value: 5 },
+        { name: "Quedas", value: 5 },
+        { name: "Audição", value: 8 }
+      ]
+    }
   ];
-
-  // Colors for "Pontuação dos desfechos"
   outcomeColors = {
-    domain: ["#EA00FF", "#51FF00", "#C96807", "#AA00FF", "#FF0004", "#FFFB09"], // Pink, Green, Orange, Purple, Red, Yellow
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ["#EA00FF", "#51FF00", "#C96807", "#AA00FF", "#FF0004", "#FFFB09"],
   };
 }
